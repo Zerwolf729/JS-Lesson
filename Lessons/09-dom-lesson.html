@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Object Model</title>
+</head>
+<body>
+  <button>
+    9a
+  </button>
+  <button class="js-button">
+    9b
+  </button>
+
+  <hr>
+
+  <button onclick="
+  headTails('heads');
+  ">
+    heads
+  </button>
+
+  <button onclick="
+  headTails('tails');
+  ">
+    tails
+  </button>
+
+  <p class="js-choice"></p>
+
+  <hr>
+
+  <input type="text" class="input-name" placeholder="Name" onkeydown =" 
+  if (event.key === 'Enter') {
+    inputFormName();
+  }
+  ">
+
+  <button onclick="
+  inputFormName();
+  ">
+    Submit
+  </button>
+
+  <p class="message-form"></p>
+
+  <hr>
+
+  <p>
+    Amazon Shipping Calculator
+  </p>
+
+  <p>
+    Orders under $40 = +$10 shipping.
+  </p>
+
+  <p>
+    Orders over $40 = FREE shipping.
+  </p>
+
+  <input type="number" placeholder="Cost of Order" class="js-cost-input" onkeydown="
+  handleCostKeydown(event);
+  ">
+
+  <button onclick="
+    calculateTotal();
+  ">
+    Calculate
+  </button>
+
+  <p class="js-total-cost"></p>
+
+  <hr>
+
+  <input type="text" placeholder="Type something" class="input-something" onkeyup="
+  typeSomethingForm();
+  ">
+
+  <p class="something-message"></p>
+
+  <script>
+    console.log(document.querySelector('button'));
+
+    document.querySelector('.js-button')
+    .innerHTML = '9b done!';
+
+
+    function headTails(choice) {
+      const headsTailsChoice = document.querySelector('.js-choice');
+
+      if (choice === 'heads') {
+        headsTailsChoice.innerHTML = 'You chose: Heads';
+      } else if (choice === 'tails') {
+        headsTailsChoice.innerHTML = 'You chose: Tails';
+      }
+    }
+
+
+    function inputFormName() {
+      const inputElement = document.querySelector('.input-name');
+      document.querySelector('.message-form')
+      .innerHTML = `Your name is: ${inputElement.value}`;
+    }
+
+
+    function handleCostKeydown (event) {
+      if (event.key ==='Enter') {
+        calculateTotal();
+      }
+
+    }
+    function calculateTotal () {
+      const inputElement = document.querySelector('.js-cost-input');
+      let cost = Number(inputElement.value) * 100;   
+
+      if (cost < 4000) {
+        cost += 1000;
+      } 
+
+      document.querySelector('.js-total-cost')
+      .innerHTML = `$${cost / 100}`;
+    }
+
+
+    function typeSomethingForm () {
+        const inputElement = document.querySelector('.input-something');
+        document.querySelector('.something-message')
+        .innerHTML = inputElement.value;
+    }
+  </script>
+</body>
+</html>
